@@ -3,7 +3,7 @@ pragma solidity 0.6.11;
 
 import { IERC20, SafeERC20 } from  "../../../../lib/openzeppelin-contracts/contracts/token/ERC20/SafeERC20.sol";
 
-import { ILoan } from "../../loan/v1/interfaces/ILoan.sol";
+import { ILoan } from "../../loan/contracts/interfaces/ILoan.sol";
 
 import { ILiquidityLocker } from "./interfaces/ILiquidityLocker.sol";
 
