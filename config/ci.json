@@ -1,0 +1,30 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/LiquidityLockerFactory.sol": {
+      "urls": ["contracts/LiquidityLockerFactory.sol"]
+    },
+    "contracts/test/LiquidityLockerFactory.t.sol": {
+      "urls": ["contracts/test/LiquidityLockerFactory.t.sol"]
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode"
+        ],
+        "": ["ast"]
+      }
+    },
+    "metadata": {
+      "bytecodeHash": "none"
+    }
+  }
+}

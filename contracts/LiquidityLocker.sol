@@ -1,11 +1,16 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 pragma solidity 0.6.11;
 
-import { IERC20, SafeERC20 } from  "../../../../lib/openzeppelin-contracts/contracts/token/ERC20/SafeERC20.sol";
-
-import { ILoan } from "../../loan/contracts/interfaces/ILoan.sol";
+import { IERC20, SafeERC20 } from  "../modules/openzeppelin-contracts/contracts/token/ERC20/SafeERC20.sol";
 
 import { ILiquidityLocker } from "./interfaces/ILiquidityLocker.sol";
+
+// NOTE: IFundableLoan exists to prevent circular dependency tree.
+interface IFundableLoan {
+
+    function fundLoan(address debtLocker, uint256 amount) external;
+
+}
 
 /// @title LiquidityLocker holds custody of Liquidity Asset tokens for a given Pool.
 contract LiquidityLocker is ILiquidityLocker {
@@ -35,7 +40,7 @@ contract LiquidityLocker is ILiquidityLocker {
 
     function fundLoan(address loan, address debtLocker, uint256 amount) external override isPool {
         liquidityAsset.safeApprove(loan, amount);
-        ILoan(loan).fundLoan(debtLocker, amount);
+        IFundableLoan(loan).fundLoan(debtLocker, amount);
     }
 
 }
