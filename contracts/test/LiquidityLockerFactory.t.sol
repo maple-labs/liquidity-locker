@@ -10,7 +10,7 @@ import { LiquidityLockerFactory } from "../LiquidityLockerFactory.sol";
 
 import { LiquidityLockerOwner } from "./accounts/LiquidityLockerOwner.sol";
 
-contract MintableToken is ERC20 {
+contract MockToken is ERC20 {
 
     constructor (string memory name, string memory symbol) ERC20(name, symbol) public {}
 
@@ -20,8 +20,7 @@ contract MintableToken is ERC20 {
 
 }
 
-// NOTE: FundableLoan exists to prevent circular dependency tree.
-contract FundableLoan {
+contract MockLoan {
 
     function fundLoan(address debtLocker, uint256 amount) external {}
 
@@ -31,10 +30,10 @@ contract LiquidityLockerFactoryTest is DSTest {
 
     function test_newLocker() external {
         LiquidityLockerFactory factory  = new LiquidityLockerFactory();
-        MintableToken          token    = new MintableToken("TKN", "TKN");
+        MockToken              token    = new MockToken("TKN", "TKN");
         LiquidityLockerOwner   owner    = new LiquidityLockerOwner();
         LiquidityLockerOwner   nonOwner = new LiquidityLockerOwner();
-        FundableLoan           loan     = new FundableLoan();
+        MockLoan               loan     = new MockLoan();
 
         ILiquidityLocker locker = ILiquidityLocker(owner.liquidityLockerFactory_newLocker(address(factory), address(token)));
 

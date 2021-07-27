@@ -1,14 +1,13 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 pragma solidity 0.6.11;
 
-import { ILiquidityLocker } from "../../interfaces/ILiquidityLocker.sol";
-
-import { LiquidityLockerFactory } from "../../LiquidityLockerFactory.sol";
+import { ILiquidityLocker }        from "../../interfaces/ILiquidityLocker.sol";
+import { ILiquidityLockerFactory } from "../../interfaces/ILiquidityLockerFactory.sol";
 
 contract LiquidityLockerOwner {
 
     function liquidityLockerFactory_newLocker(address factory, address token) external returns (address) {
-        return LiquidityLockerFactory(factory).newLocker(token);
+        return ILiquidityLockerFactory(factory).newLocker(token);
     }
 
     function try_liquidityLockerFactory_newLocker(address factory, address token) external returns (bool ok) {
