@@ -8,7 +8,7 @@ import { LiquidityLockerFactory } from "../../LiquidityLockerFactory.sol";
 contract LiquidityLockerOwner {
 
     function liquidityLockerFactory_newLocker(address factory, address token) external returns (address) {
-        return address(ILiquidityLocker(LiquidityLockerFactory(factory).newLocker(token)));
+        return LiquidityLockerFactory(factory).newLocker(token);
     }
 
     function try_liquidityLockerFactory_newLocker(address factory, address token) external returns (bool ok) {
