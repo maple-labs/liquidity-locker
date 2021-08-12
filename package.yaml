@@ -1,0 +1,11 @@
+name: liquidity-locker
+version: 1.0.0
+source: contracts
+packages:
+  - path: contracts/LiquidityLockerFactory.sol
+    contractName: LiquidityLockerFactory
+    customChecksum: 0x276ae3944de6bc0736e27955e3b542dbec9dc065060b00225859b282c5ed5fbf
+  - path: contracts/LiquidityLocker.sol
+    contractName: LiquidityLocker
+    customChecksum: 0x1eafa21cf50dd9e63d0cc96736a66957292115b9515dd6ff02aa9bd4863bf5d9
+customDescription: Liquidity Locker Artifacts and ABIs
