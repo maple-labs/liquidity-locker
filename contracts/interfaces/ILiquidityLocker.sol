@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 pragma solidity 0.6.11;
 
-import { IERC20 } from "../../modules/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
-
 /// @title LiquidityLocker holds custody of Liquidity Asset tokens for a given Pool.
 interface ILiquidityLocker {
 
@@ -14,7 +12,7 @@ interface ILiquidityLocker {
     /**
         @dev The Liquidity Asset which this LiquidityLocker will escrow.
      */
-    function liquidityAsset() external view returns (IERC20);
+    function liquidityAsset() external view returns (address);
 
     /**
         @dev   Transfers amount of Liquidity Asset to a destination account. 
