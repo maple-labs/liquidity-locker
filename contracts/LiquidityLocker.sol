@@ -11,8 +11,8 @@ contract LiquidityLocker is ILiquidityLocker {
 
     using SafeERC20 for IERC20;
 
-    address public override immutable liquidityAsset;
     address public override immutable pool;
+    address public override immutable liquidityAsset;
 
     constructor(address _liquidityAsset, address _pool) public {
         liquidityAsset = _liquidityAsset;
