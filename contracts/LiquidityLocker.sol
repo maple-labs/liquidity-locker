@@ -12,10 +12,10 @@ contract LiquidityLocker is ILiquidityLocker {
     using SafeERC20 for IERC20;
 
     address public override immutable pool;
-    IERC20  public override immutable liquidityAsset;
+    address public override immutable liquidityAsset;
 
     constructor(address _liquidityAsset, address _pool) public {
-        liquidityAsset = IERC20(_liquidityAsset);
+        liquidityAsset = _liquidityAsset;
         pool           = _pool;
     }
 
@@ -29,11 +29,11 @@ contract LiquidityLocker is ILiquidityLocker {
 
     function transfer(address dst, uint256 amt) external override isPool {
         require(dst != address(0), "LL:NULL_DST");
-        liquidityAsset.safeTransfer(dst, amt);
+        IERC20(liquidityAsset).safeTransfer(dst, amt);
     }
 
     function fundLoan(address loan, address debtLocker, uint256 amount) external override isPool {
-        liquidityAsset.safeApprove(loan, amount);
+        IERC20(liquidityAsset).safeApprove(loan, amount);
         ILoanLike(loan).fundLoan(debtLocker, amount);
     }
 
